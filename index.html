@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puskesmas eHealth</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff5f5;
+            color: #333;
+        }
+    
+        header {
+            background-color: #ff4141;
+            color: white;
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+    
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+    
+        .logo-title {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+    
+        .menu-toggle span {
+            height: 3px;
+            width: 30px;
+            background: white;
+            margin: 3px 0;
+        }
+    
+        nav {
+            position: relative;
+        }
+    
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+    
+        .home-link {
+            margin-right: 30px;
+        }
+    
+        .home-link a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 125px;
+        }
+    
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none; /* Hilangkan garis bawah */
+            font-size: 16px;
+        }
+    
+        .dropdown a:hover {
+            background-color: #ff796f;
+            color: white;
+        }
+    
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+    
+        .main-menu h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #ff4141;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    
+        .main-menu p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #555;
+            line-height: 1.5;
+        }
+    
+        .menu-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); 
+            gap: 20px;
+            padding: 0 20px;
+        }
+    
+        .menu-option {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+    
+        .menu-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+        .menu-option img {
+            width: 180px;
+            height: 160px;
+            margin-right: 25px;
+            border-radius: 10%;
+        }
+    
+        .menu-option .text {
+            flex: 1;
+            text-align: left;
+        }
+    
+        .menu-option .text h3 {
+            font-size: 24px;
+            margin: 0 0 12px 0;
+            color: #333;
+        }
+    
+        .menu-option .text p {
+            font-size: 18px;
+            margin: 0;
+            color: #666;
+            line-height: 1.6;
+        }
+    
+        footer {
+            background-color: #ff4141;
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+    
+        footer p {
+            margin: 0;
+        }
+    
+        @media (max-width: 768px) {
+            .menu-option {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu-option img {
+                width: 150px; 
+                height: 130px; 
+                margin-bottom: 15px;
+            }
+
+            .menu-option .text h3 {
+                font-size: 20px;
+            }
+
+            .menu-option .text p {
+                font-size: 16px;
+            }
+        }
+    
+        @media (min-width: 769px) {
+            .menu-options {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+                padding: 0 20px;
+            }
+
+            .menu-option {
+                background: #fff;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                padding: 20px;
+                display: flex;
+                align-items: center; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s, box-shadow 0.3s;
+                cursor: pointer;
+                height: 200px;
+                max-width: 100%;
+                display: flex;
+                justify-content: flex-start; 
+            }
+
+            .menu-option:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu-option img {
+                width: 100px;
+                height: 100px;
+                margin-right: 20px;
+                border-radius: 10%;
+            }
+
+            .menu-option .text {
+                flex-grow: 1;
+            }
+
+            .menu-option .text h3 {
+                font-size: 18px;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            .menu-option .text p {
+                font-size: 14px;
+                color: #666;
+            }
+        }
+    </style>   
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/91/46/f8/9146f8e390b9732368aa2f63a061f44c.jpg" alt="Logo Puskesmas">
+            <div class="logo-title">Pendaftaran Online</div>
+        </div>
+        <div class="menu">
+            <div class="home-link">
+                <a href="#home">Home</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="dropdown" id="dropdownMenu">
+                <li><a href="#help"><i class="fas fa-question-circle"></i> Help</a></li>
+                <li><a href="#feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="main-menu">
+            <h1>Selamat Datang di Puskesmas eHealth</h1>
+            <p>Silakan pilih sarana kesehatan yang Anda butuhkan di bawah ini:</p>
+
+            <div class="menu-options">
+                <!-- Menu Options -->
+                <a style="text-decoration:none" href="rumah_sakit.html">
+                    <div class="menu-option">
+                        <img src="https://i.pinimg.com/736x/c7/1f/a0/c71fa0ca10f8ae718891f45a1aedebb2.jpg" alt="Rumah Sakit">
+                        <div class="text">
+                            <h3>Rumah Sakit</h3>
+                            <p>Pelayanan kesehatan terbaik dengan fasilitas lengkap.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a style="text-decoration:none" href="puskesmas.html">
+                    <div class="menu-option">
+                        <img src="https://i.pinimg.com/736x/74/65/ae/7465aefb3fa5c5b35c6371635f920a17.jpg" alt="Puskesmas">
+                        <div class="text">
+                            <h3>Puskesmas</h3>
+                            <p>Layanan kesehatan dasar untuk masyarakat sekitar.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a style="text-decoration:none" href="batal-reprint.html">
+                    <div class="menu-option">
+                        <img src="https://i.pinimg.com/736x/a0/57/ea/a057eabfc6910acc9de96f3670e714c2.jpg" alt="Batal atau Reprint">
+                        <div class="text">
+                            <h3>Batal atau Reprint</h3>
+                            <p>Pembatalan antrean atau Reprint tiket antrean.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a style="text-decoration:none" href="rujukan.html">
+                    <div class="menu-option">
+                        <img src="https://i.pinimg.com/736x/2e/96/9c/2e969c6d1f2f281abd432d7ceef6a221.jpg" alt="Rumah Sakit Rujukan">
+                        <div class="text">
+                            <h3>Rumah Sakit Rujukan</h3>
+                            <p>Pengecekan tentang rumah sakit rujukan untuk puskesmas.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a style="text-decoration:none" href="pendaftaran-catin.html">
+                    <div class="menu-option">
+                        <img src="https://i.pinimg.com/736x/ce/05/97/ce05979932786f7739d1ce990f4bd3c5.jpg" alt="Pendaftaran Catin">
+                        <div class="text">
+                            <h3>Pendaftaran Catin</h3>
+                            <p>Pendaftaran untuk pemeriksaan kesehatan calon pengantin.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a style="text-decoration:none" href="peta.html">
+                    <div class="menu-option">
+                        <img src="https://i.pinimg.com/736x/81/a6/d3/81a6d38b21f12af788d74a45c3df4d59.jpg" alt="Peta">
+                        <div class="text">
+                            <h3>Peta</h3>
+                            <p>Lihat lokasi fasilitas kesehatan terdekat di daerah Anda.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Puskesmas eHealth. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuToggle.addEventListener('click', () => {
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
