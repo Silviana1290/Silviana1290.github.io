@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading... | Puskesmas eHealth</title>
+    <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f9f9f9;
+          font-family: Arial, sans-serif;
+          overflow: hidden; /* Prevent scrolling while loading */
+      }
+
+      .container {
+        position: relative;
+      }
+
+      .loading {
+        position: relative;
+      }
+
+      .loading span {
+        position: absolute;
+        color: #fff;
+        transform: translate(-50%, -50%);
+        font-size: 38px;
+        letter-spacing: 5px;
+      }
+
+      .loading span:nth-child(1) {
+        color: transparent;
+        -webkit-text-stroke: 0.6px rgb(3, 94, 11);
+      }
+
+      .loading span:nth-child(2) {
+        color: rgb(3, 94, 11);
+        -webkit-text-stroke: 1px rgb(3, 94, 11);
+        animation: load 3s ease-in-out infinite;
+      }
+
+      @keyframes load {
+        0%, 100% {
+          clip-path: polygon(0% 45%, 15% 44%, 32% 50%,
+          54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+        }
+
+        50% {
+          clip-path: polygon(0% 60%, 16% 65%, 40% 66%,
+          55% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading">
+      <span>Ehealth</span>
+      <span>Ehealth</span>
+    </div>
+
+    <script>
+      // After 3 seconds, navigate to the target URL
+      setTimeout(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetUrl = urlParams.get('target') || 'index.html';
+
+        // Redirect to the target URL
+        window.location.href = targetUrl;
+      }, 3000);
+    </script>
+  </body>
+</html>
