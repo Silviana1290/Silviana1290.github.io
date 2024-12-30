@@ -14,7 +14,16 @@
             background-color: #fff5f5;
             color: #333;
         }
-    
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Warna abu-abu transparan */
+            z-index: 1000;
+        }
         header {
             background-color: #ff4141;
             color: white;
@@ -265,8 +274,7 @@
                 z-index: 1000;
                 top: 0;
                 left: 80px;
-            }
-
+          }
             .loadingScreen span {
               position: absolute;
               color: #fff;
@@ -297,6 +305,263 @@
                 55% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
               }
             }
+            .inputGroup {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 20px 0;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .inputGroup input {
+            font-size: 1rem;
+            padding: 14px;
+            outline: none;
+            border: 2px solid #000;
+            background-color: transparent;
+            border-radius: 8px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .inputGroup label {
+            font-size: 1rem;
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            color: #666;
+            background-color: #fff;
+            padding: 0 5px;
+        }
+
+        .inputGroup input:focus ~ label,
+        .inputGroup input:valid ~ label {
+            top: -10px;
+            font-size: 0.85rem;
+            color: #000;
+        }
+
+        .inputGroup input:focus {
+            border-color: #000;
+        }
+
+        .reprintForm {
+            width: 550px;
+            border: 3px solid #000;
+            background-color: #fff;
+            padding-top: 5px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 1001;
+        }
+
+        .close-button {
+            position: relative;
+            left: 490px;
+            right: 0;
+            top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height:10px;
+            width:10px;
+            padding: 10px 10px;
+            background-color: red;
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: darkred;
+        }
+
+        .form__alert {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 15px;
+            padding-right: 20px;
+            font-weight: bold;
+            color: #000;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+
+        }
+
+        .animasi-button {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            border: 2px solid;
+            left: 100px;
+            right: 0;
+            border-color: transparent;
+            font-size: 16px;
+            background-color: inherit;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #35e40a;
+            box-shadow: 0 0 0 2px #35e40a;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            min-width: 10rem;
+        }
+
+        .animasi-button svg {
+            position: absolute;
+            width: 24px;
+            fill: #35e40a;
+            z-index: 9;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animasi-button .arr-1 {
+            right: 16px;
+        }
+
+        .animasi-button .arr-2 {
+            left: -25%;
+        }
+
+        .animasi-button .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #35e40a;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animasi-button .text {
+            position: relative;
+            z-index: 1;
+            transform: translateX(-12px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animasi-button:hover {
+            box-shadow: 0 0 0 12px transparent;
+            color: #000;
+            border-radius: 20px;
+        }
+
+        .animasi-button:hover .arr-1 {
+            right: -30%;
+        }
+
+        .animasi-button:hover .arr-2 {
+            left: 11px;
+        }
+
+        .animasi-button:hover .text {
+            transform: translateX(12px);
+        }
+
+        .animasi-button:hover svg {
+            fill: #000;
+        }
+
+        .animasi-button:active {
+            scale: 0.95;
+            box-shadow: 0 0 0 4px #35e40a;
+        }
+
+        .animasi-button:hover .circle {
+            width: 220px;
+            height: 220px;
+            opacity: 1;
+        }
+
+        .pembatas {
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #000;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-top: 3px solid #000;
+            padding-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        button {
+            position: relative;
+            left: 360px;
+            width: 150px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background: red;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+            background: #e62222;
+        }
+
+        button, button span {
+            transition: 200ms;
+        }
+
+        button .textu {
+            transform: translateX(60px);
+            color: white;
+            font-weight: bold;
+        }
+
+        button .icon {
+            position: absolute;
+            border-left: 1px solid #c41b1b;
+            transform: translateX(0px);
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button svg {
+            width: 15px;
+            fill: #eee;
+        }
+
+        button:hover .textu {
+            color: transparent;
+        }
+
+        button:hover .icon {
+            width: 150px;
+            border-left: none;
+            transform: translateX(360);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button:active .icon svg {
+            transform: scale(0.8);
+        }
     </style>   
 </head>
 <body>
@@ -353,7 +618,8 @@
                     </div>
                 </a>
 
-                <a style="text-decoration:none" href="batal-reprint.html">
+                <a style="text-decoration:none" href="batal-reprint.html" id="showFormBtn">
+                    <div id="overlay" class="overlay"></div>
                     <div class="menu-option">
                         <img src="https://i.pinimg.com/736x/a0/57/ea/a057eabfc6910acc9de96f3670e714c2.jpg" alt="Batal atau Reprint">
                         <div class="text">
@@ -362,8 +628,41 @@
                         </div>
                     </div>
                 </a>
+                
+                <!-- Form yang tersembunyi pada awalnya -->
+                <div class="reprintForm" id="reprintForm" style="display: none;">
+                    <button class="close-button" id="closeFormBtn">&times;</button>
+                    <div class="form__alert">Reprint</div>
+                    <div class="pembatas">
+                        <label for="nik"></label>
+                        <div class="inputGroup">
+                            <input type="text" id="nik" required autocomplete="off" />
+                            <label for="nik">Masukan data NIK</label>
+                            <p id="error-message" style="color:red; font-size:14px; margin:5px 0;"></p>
+                        </div>
+                    </div>
+                    <button class="animasi-button">
+                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 9a5 5 0 1110 0A5 5 0 014 9zm5-7a7 7 0 104.2 12.6.999.999 0 00.093.107l3 3a1 1 0 001.414-1.414l-3-3a.999.999 0 00-.107-.093A7 7 0 009 2z"></path>
+                        </svg>
+                        <span class="text">Cari Antrean</span>
+                        <span class="circle"></span>
+                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 9a5 5 0 1110 0A5 5 0 014 9zm5-7a7 7 0 104.2 12.6.999.999 0 00.093.107l3 3a1 1 0 001.414-1.414l-3-3a.999.999 0 00-.107-.093A7 7 0 009 2z"></path>
+                        </svg>
+                    </button>
+                  
+                    <button class="noselect" href="index.html">
+                        <span class="textu">Tutup</span>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
+                            </svg>
+                        </span>
+                    </button>
+                </div>                
 
-                <a style="text-decoration:none" href="rujukan.html">
+                <a style="text-decoration:none" href="rumah_sakit_rujukan.html">
                     <div class="menu-option">
                         <img src="https://i.pinimg.com/736x/2e/96/9c/2e969c6d1f2f281abd432d7ceef6a221.jpg" alt="Rumah Sakit Rujukan">
                         <div class="text">
@@ -401,6 +700,59 @@
     </footer>
   </div>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        // Tombol untuk menampilkan form
+        const showFormBtn = document.getElementById("showFormBtn");
+        const reprintForm = document.getElementById("reprintForm");
+        const closeFormBtn = document.getElementById("closeFormBtn");
+        const inputNik = document.getElementById("nik");
+        const errorMessage = document.getElementById("error-message");
+        const animasiButton = document.querySelector(".animasi-button");
+
+        // Fungsi untuk menampilkan form
+        document.getElementById("showFormBtn").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("reprintForm").style.display = "block";
+
+            // Pastikan z-index reprintForm lebih tinggi dari overlay
+            document.getElementById("reprintForm").style.zIndex = "1001";
+            document.getElementById("overlay").style.zIndex = "1000";
+        });
+
+    // Close the form and hide the overlay
+        document.getElementById("closeFormBtn").addEventListener("click", function() {
+            document.getElementById("reprintForm").style.display = "none"; 
+            document.getElementById("overlay").style.display = "none";
+        });
+        // Simulasi data NIK yang valid
+        const validNIKs = ["1234567890123456", "2345678901234567", "3456789012345678"];
+
+        // Fungsi validasi NIK
+        animasiButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            const enteredNIK = inputNik.value.trim();
+
+            // Reset pesan error
+            errorMessage.textContent = "";
+
+            // Cek apakah NIK kosong
+            if (!enteredNIK) {
+                errorMessage.textContent = "Mohon masukkan NIK Anda.";
+                return;
+            }
+
+            // Cek apakah NIK ada dalam daftar valid
+            if (validNIKs.includes(enteredNIK)) {
+                errorMessage.textContent = "NIK ditemukan! Silakan lanjutkan.";
+                errorMessage.style.color = "green"; // Ubah warna menjadi hijau jika valid
+            } else {
+                errorMessage.textContent = "NIK tidak ditemukan. Silakan cek kembali NIK Anda.";
+                errorMessage.style.color = "red"; // Ubah warna menjadi merah jika tidak valid
+            }
+        });
+    });
+
       window.onload = function() {
             setTimeout(function() {
                 document.getElementById('loadingScreen').style.display = 'none';
